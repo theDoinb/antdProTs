@@ -76,17 +76,17 @@ export default {
   },
   // umi routes: https://umijs.org/zh/guide/router.html
   routes: [
-    {
-      path: '/user',
-      component: '../layouts/UserLayout',
-      routes: [
-        {
-          name: 'login',
-          path: '/user/login',
-          component: './user/login',
-        },
-      ],
-    },
+    // {
+    //   path: '/user',
+    //   component: '../layouts/UserLayout',
+    //   routes: [
+    //     {
+    //       name: 'login',
+    //       path: '/user/login',
+    //       component: './user/login',
+    //     },
+    //   ],
+    // },
     {
       path: '/',
       component: '../layouts/BasicLayout',
@@ -94,21 +94,33 @@ export default {
       routes: [
         {
           path: '/',
-          redirect: '/welcome',
+          redirect: '/three',
         },
         {
-          path: '/welcome',
-          name: 'welcome',
+          path: '/three',
+          name: 'Three.js',
           icon: 'smile',
           component: './Welcome',
         },
         {
-          path: '/admin',
-          name: 'admin',
-          icon: 'crown',
-          component: './Admin',
-          authority: ['admin'],
+          path: '/drag1',
+          name: '拖拽1',
+          icon: 'smile',
+          component: './Drag1',
         },
+        {
+          path: '/drag2',
+          name: '拖拽2',
+          icon: 'smile',
+          component: './Drag2',
+        },
+        // {
+        //   path: '/admin',
+        //   name: 'admin',
+        //   icon: 'crown',
+        //   component: './Admin',
+        //   authority: ['admin'],
+        // },
         {
           component: './404',
         },

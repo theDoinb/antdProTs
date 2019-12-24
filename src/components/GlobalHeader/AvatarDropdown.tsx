@@ -1,4 +1,4 @@
-import { Avatar, Icon, Menu, Spin } from 'antd';
+import { Avatar, Icon, Menu } from 'antd';
 import { ClickParam } from 'antd/es/menu';
 import { FormattedMessage } from 'umi-plugin-react/locale';
 import React from 'react';
@@ -22,9 +22,9 @@ class AvatarDropdown extends React.Component<GlobalHeaderRightProps> {
     if (key === 'logout') {
       const { dispatch } = this.props;
       if (dispatch) {
-        dispatch({
-          type: 'login/logout',
-        });
+        // dispatch({
+        //   type: 'login/logout',
+        // });
       }
 
       return;
@@ -33,7 +33,7 @@ class AvatarDropdown extends React.Component<GlobalHeaderRightProps> {
   };
 
   render(): React.ReactNode {
-    const { currentUser = { avatar: '', name: '' }, menu } = this.props;
+    const { menu } = this.props;
 
     const menuHeaderDropdown = (
       <Menu className={styles.menu} selectedKeys={[]} onClick={this.onMenuClick}>
@@ -58,16 +58,24 @@ class AvatarDropdown extends React.Component<GlobalHeaderRightProps> {
       </Menu>
     );
 
-    return currentUser && currentUser.name ? (
+    return (
       <HeaderDropdown overlay={menuHeaderDropdown}>
         <span className={`${styles.action} ${styles.account}`}>
-          <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" />
-          <span className={styles.name}>{currentUser.name}</span>
+          <Avatar size="small" className={styles.avatar} src='http://b-ssl.duitang.com/uploads/item/201508/18/20150818213048_vAdhz.jpeg' alt="avatar" />
+          <span className={styles.name}>Veigar</span>
         </span>
       </HeaderDropdown>
-    ) : (
-      <Spin size="small" style={{ marginLeft: 8, marginRight: 8 }} />
-    );
+    )
+    // return currentUser && currentUser.name ? (
+    //   <HeaderDropdown overlay={menuHeaderDropdown}>
+    //     <span className={`${styles.action} ${styles.account}`}>
+    //       <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" />
+    //       <span className={styles.name}>{currentUser.name}</span>
+    //     </span>
+    //   </HeaderDropdown>
+    // ) : (
+    //   <Spin size="small" style={{ marginLeft: 8, marginRight: 8 }} />
+    // );
   }
 }
 export default connect(({ user }: ConnectState) => ({
