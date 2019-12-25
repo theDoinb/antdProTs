@@ -19,10 +19,10 @@ export default class Welcome extends React.Component {
     this.load();
   }
 
-  load = () => {
+  load = ():void => {
     const scene = new THREE.Scene();
-    const width = 1280;
-    const height = 768;
+    const width = document.getElementById('threeDemo').offsetWidth;
+    const height = document.getElementById('threeDemo').offsetHeight;
     scene.background = 0x1890ff;
     const camera = new THREE.PerspectiveCamera(
       45,
@@ -82,9 +82,9 @@ export default class Welcome extends React.Component {
   render(): React.ReactNode {
     const { loading } = this.state;
     return  (
-      <Spin spinning={loading}>
-        <Card style={{backgroundColor:'#8fd3ff'}}>
-          <div id='threeDemo' style={{height:'100%',width:1280, margin: '0 auto'}} />
+      <Spin spinning={loading} wrapperClassName={styles.spinSty}>
+        <Card style={{backgroundColor:'#8fd3ff'}} className={styles.cardSty}>
+          <div id='threeDemo' style={{height:'100%',width:'100%', margin: '0 auto'}} />
         </Card>
       </Spin>
     );

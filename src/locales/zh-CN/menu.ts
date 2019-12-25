@@ -48,4 +48,8 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+  'menu.主页': '主页',
+  'menu.Three.js': 'Three.js',
+  'menu.拖拽1': '拖拽1',
+  'menu.拖拽2': '拖拽2',
 };

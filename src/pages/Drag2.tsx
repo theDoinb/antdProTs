@@ -3,8 +3,8 @@ import { Card } from 'antd';
 import { Rnd } from "react-rnd";
 import ReactEcharts from "echarts-for-react";
 import echarts from "echarts/lib/echarts";
-import $ from '../../public/jquery'
 import styles from './Welcome.less'
+import { geoJson } from '../../public/gdMap'
 
 const data1 = {
   backgroundColor: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -209,77 +209,77 @@ export default class Drag1 extends React.Component {
     const myChart = echarts.init(document.getElementById('map'));
     let option = {};
     let data = [];
-    $.getJSON('/gdMap.json', function(geoJson: Object): void {
-      echarts.registerMap('广东', geoJson);
-      data = geoJson.features.map((item) => {
-        return {
-          value: (Math.random() * 1000).toFixed(2),
-          name: item.properties.name
-        }
-      });
-      option = {
+
+    echarts.registerMap('广东', geoJson);
+    data = geoJson.features.map((item) => {
+      return {
+        value: (Math.random() * 1000).toFixed(2),
+        name: item.properties.name
+      }
+    });
+    option = {
+      tooltip: {
+        backgroundColor: 'rgba(0,0,0,0)',
+        trigger: 'item',
+      },
+      legend: {
+        show: false,
+      },
+      series: [{
         tooltip: {
-          backgroundColor: 'rgba(0,0,0,0)',
           trigger: 'item',
+          formatter: function(item: Object) {
+            var tipHtml = '';
+            tipHtml = '<div style="background:#fff;border-radius:10px;padding-top:10px;box-shadow:0 0 10px #666">' +
+              '<div style="color:#fff;height:20px;border-radius:6px;font-size:12px;line-height:20px;background-color:#5861a2;text-align:center;margin:0 2px;">' + item.data.name + '</div>' +
+              '<div style="text-align:center;color:#494949;padding:8px 6px">' +
+              '<span style="font-size:18px;font-weight:bold;">' + item.data.value + ' ' + '</span>' +
+              '</div>' + '</div>';
+            return tipHtml;
+          }
         },
-        legend: {
-          show: false,
+        name: '广东省数据',
+        type: 'map',
+        map: '广东', // 自定义扩展图表类型
+        aspectScale: 1,
+        zoom: 1, //缩放
+        showLegendSymbol: false,
+        label: {
+          show: true,
+          color: '#fff',
+          fontSize: 10
         },
-        series: [{
-          tooltip: {
-            trigger: 'item',
-            formatter: function(item: Object) {
-              var tipHtml = '';
-              tipHtml = '<div style="background:#fff;border-radius:10px;padding-top:10px;box-shadow:0 0 10px #666">' +
-                '<div style="color:#fff;height:20px;border-radius:6px;font-size:12px;line-height:20px;background-color:#5861a2;text-align:center;margin:0 2px;">' + item.data.name + '</div>' +
-                '<div style="text-align:center;color:#494949;padding:8px 6px">' +
-                '<span style="font-size:18px;font-weight:bold;">' + item.data.value + ' ' + '</span>' +
-                '</div>' + '</div>';
-              return tipHtml;
-            }
-          },
-          name: '广东省数据',
-          type: 'map',
-          map: '广东', // 自定义扩展图表类型
-          aspectScale: 1,
-          zoom: 1, //缩放
-          showLegendSymbol: false,
+        itemStyle: {
+          areaColor: '#0E95F1',
+          borderColor: '#e9e9e9',
+          borderWidth: 1,
+          shadowColor: '#0E95F1',
+          shadowBlur: 20,
+        },
+        emphasis: {
           label: {
             show: true,
             color: '#fff',
             fontSize: 10
           },
           itemStyle: {
-            areaColor: '#0E95F1',
-            borderColor: '#e9e9e9',
-            borderWidth: 1,
-            shadowColor: '#0E95F1',
-            shadowBlur: 20,
-          },
-          emphasis: {
-            label: {
-              show: true,
-              color: '#fff',
-              fontSize: 10
-            },
-            itemStyle: {
-              areaColor: '#FFD181',
-              borderColor: '#fff',
-              borderWidth: 1
-            }
-          },
-          layoutCenter: ['50%', '50%'],
-          layoutSize: '160%',
-          markPoint: {
-            symbol: 'none'
-          },
-          data: data,
-        }],
-      };
-      myChart.setOption(option);
-      showTips('广州市');
-    });
-  // 默认鼠标移出canvas后显示广州的tooltip信息
+            areaColor: '#FFD181',
+            borderColor: '#fff',
+            borderWidth: 1
+          }
+        },
+        layoutCenter: ['50%', '50%'],
+        layoutSize: '160%',
+        markPoint: {
+          symbol: 'none'
+        },
+        data: data,
+      }],
+    };
+    myChart.setOption(option);
+    showTips('广州市');
+
+    // 默认鼠标移出canvas后显示广州的tooltip信息
     myChart.on("globalout", () => {
       setTimeout(() => {
         showTips('广州市')
@@ -304,10 +304,16 @@ export default class Drag1 extends React.Component {
     }
     this.setState({
       myChart
-    })
+    });
+    window.addEventListener("resize", this.handleResize.bind(this));
+  };
+
+  handleResize =()=>{
+    this.state.myChart.resize();
   };
 
   render() {
+    const winWidth = window.document.body.offsetWidth;
     return (
       <Card className={styles.drag2card}>
         <div
@@ -321,7 +327,7 @@ export default class Drag1 extends React.Component {
             default={{
               x: 0,
               y: 0,
-              width: 500,
+              width: 500<winWidth?500:winWidth-100,
               height: 200
             }}
             overflow="hidden"
@@ -336,7 +342,7 @@ export default class Drag1 extends React.Component {
             default={{
               x: 520,
               y: 0,
-              width: 500,
+              width: 500<winWidth?500:winWidth-100,
               height: 200
             }}
             overflow="hidden"
@@ -349,7 +355,7 @@ export default class Drag1 extends React.Component {
             default={{
               x: 0,
               y: 220,
-              width: 500,
+              width: 500<winWidth?500:winWidth-100,
               height: 200
             }}
             overflow="hidden"

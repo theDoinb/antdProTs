@@ -94,7 +94,13 @@ export default {
       routes: [
         {
           path: '/',
-          redirect: '/three',
+          redirect: '/home',
+        },
+        {
+          path: '/home',
+          name: '主页',
+          icon: 'home',
+          component: './Home',
         },
         {
           path: '/three',
