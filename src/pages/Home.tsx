@@ -2,12 +2,6 @@ import React from "react";
 import { Card } from 'antd';
 import styles from './Welcome.less';
 
-let context;
-let arr = [];
-let starCount = 800;
-let rains = [];
-let rainCount = 20;
-let windowWidth;
 export default class Drag1 extends React.Component {
 
   componentDidMount(): void {

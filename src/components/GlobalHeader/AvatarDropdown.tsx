@@ -1,4 +1,4 @@
-import { Avatar, Icon, Menu } from 'antd';
+import { Avatar, Icon, Menu, notification } from 'antd';
 import { ClickParam } from 'antd/es/menu';
 import { FormattedMessage } from 'umi-plugin-react/locale';
 import React from 'react';
@@ -25,6 +25,7 @@ class AvatarDropdown extends React.Component<GlobalHeaderRightProps> {
         // dispatch({
         //   type: 'login/logout',
         // });
+        notification.error({message: '仅供参考'})
       }
 
       return;

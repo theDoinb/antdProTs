@@ -120,7 +120,12 @@ export default {
           icon: 'smile',
           component: './Drag2',
         },
-        // {
+        {
+          name: '流程编辑器',
+          icon: 'smile',
+          path: '/editorflow',
+          component: './EditorFlow',
+        }, // {
         //   path: '/admin',
         //   name: 'admin',
         //   icon: 'crown',
