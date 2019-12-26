@@ -125,7 +125,14 @@ export default {
           icon: 'smile',
           path: '/editorflow',
           component: './EditorFlow',
-        }, // {
+        },
+        {
+          name: 'Ant Motion',
+          icon: 'smile',
+          path: '/antMotion',
+          component: './AntMotion',
+        },
+        // {
         //   path: '/admin',
         //   name: 'admin',
         //   icon: 'crown',

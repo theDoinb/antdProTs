@@ -62,7 +62,7 @@ class AvatarDropdown extends React.Component<GlobalHeaderRightProps> {
     return (
       <HeaderDropdown overlay={menuHeaderDropdown}>
         <span className={`${styles.action} ${styles.account}`}>
-          <Avatar size="small" className={styles.avatar} src='http://b-ssl.duitang.com/uploads/item/201508/18/20150818213048_vAdhz.jpeg' alt="avatar" />
+          <Avatar size="small" className={styles.avatar} src={require('../../assets/userIcon.jpg')} alt="avatar" />
           <span className={styles.name}>Veigar</span>
         </span>
       </HeaderDropdown>

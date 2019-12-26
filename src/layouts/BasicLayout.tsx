@@ -14,7 +14,7 @@ import React, { useEffect } from 'react';
 import Link from 'umi/link';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import { Icon, Result, Button } from 'antd';
+import {Icon, Result, Button, BackTop} from 'antd';
 import { formatMessage } from 'umi-plugin-react/locale';
 
 import Authorized from '@/utils/Authorized';
@@ -22,6 +22,7 @@ import RightContent from '@/components/GlobalHeader/RightContent';
 import { ConnectState } from '@/models/connect';
 import { isAntDesignPro, getAuthorityFromRouter } from '@/utils/utils';
 import logo from '../assets/logo.svg';
+import TweenOne from 'rc-tween-one';
 
 const noMatch = (
   <Result
@@ -146,7 +147,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
 
   return (
     <ProLayout
-      logo={'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1577162716843&di=43897acc909538150f2c94fc018feedd&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201412%2F05%2F20141205094949_iaZht.jpeg'}
+      logo={require('../assets/logo.jpeg')}
       menuHeaderRender={(logoDom, titleDom) => (
         <Link to="/">
           {logoDom}
@@ -188,6 +189,18 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       <Authorized authority={authorized!.authority} noMatch={noMatch}>
         {children}
       </Authorized>
+      <BackTop style={{right: '.8rem',bottom:'.8rem'}}>
+        <TweenOne
+          key="c"
+          animation={{ y: '-=28', yoyo: true, repeat: -1, duration: 1600 }}
+          className="footer-up"
+          style={{ bottom: 0 }}
+        >
+          <a>
+            <Icon type="up-circle" theme="filled" style={{fontSize:28}} />
+          </a>
+        </TweenOne>
+      </BackTop>
     </ProLayout>
   );
 };

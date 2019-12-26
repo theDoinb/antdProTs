@@ -53,4 +53,5 @@ export default {
   'menu.拖拽1': '拖拽1',
   'menu.拖拽2': '拖拽2',
   'menu.流程编辑器': '流程编辑器',
+  'menu.Ant Motion': 'Ant Motion'
 };

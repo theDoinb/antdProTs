@@ -1,6 +1,6 @@
 import React from 'react';
 import { message } from 'antd'
-import GGEditor, { Flow, withPropsAPI } from 'gg-editor';
+import { Flow, withPropsAPI } from 'gg-editor';
 import { ref } from 'react.eval'
 import styles from './index.less';
 
