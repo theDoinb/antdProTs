@@ -130,7 +130,7 @@ export default {
           name: 'Ant Motion',
           icon: 'smile',
           path: '/antMotion',
-          component: './AntMotion',
+          component: './AntMotion/AntMotion',
         },
         // {
         //   path: '/admin',
