@@ -16,6 +16,7 @@ export default class Welcome extends React.Component {
 
   render(): React.ReactNode {
     const aSty = { color:'#666', textDecoration:'none', lineHeight: 2.06, fontSize:'103%' };
+
     return  (
       <div style={{paddingBottom:32,backgroundColor:'#333'}}>
         <OverPack style={{ overflow: 'hidden', minHeight:150 }} playScale="0.1" >
@@ -24,7 +25,7 @@ export default class Welcome extends React.Component {
                      component="div"
                      leaveReverse
           >
-            <div key="a" className={styles["code-box-shape-bottom"]}>
+            <div key="a" className={styles["code-box-shape-bottom"]} style={{width: window.document.body.offsetHeight>900 ? '20%':'100%'}}>
               <div style={{fontWeight:400,fontSize:'1.4rem'}}>关于作者</div>
               <div><a style={aSty}>xxxxx</a></div>
               <div><a style={aSty}>xxxxx</a></div>
@@ -33,7 +34,7 @@ export default class Welcome extends React.Component {
               <div><a style={aSty}>xxxxx</a></div>
               <div><a style={aSty}>xxxxx</a></div>
             </div>
-            <div key="b" className={styles["code-box-shape-bottom"]}>
+            <div key="b" className={styles["code-box-shape-bottom"]} style={{width: window.document.body.offsetHeight>900 ? '20%':'100%'}}>
               <div style={{fontWeight:400,fontSize:'1.4rem'}}>关于作者</div>
                 <div><a style={aSty}>xxxxx</a></div>
                 <div><a style={aSty}>xxxxx</a></div>
@@ -42,7 +43,7 @@ export default class Welcome extends React.Component {
                 <div><a style={aSty}>xxxxx</a></div>
                 <div><a style={aSty}>xxxxx</a></div>
             </div>
-            <div key="c" className={styles["code-box-shape-bottom"]}>
+            <div key="c" className={styles["code-box-shape-bottom"]} style={{width: window.document.body.offsetHeight>900 ? '20%':'100%'}}>
               <div style={{fontWeight:400,fontSize:'1.4rem'}}>关于作者</div>
                 <div><a style={aSty}>xxxxx</a></div>
                 <div><a style={aSty}>xxxxx</a></div>
@@ -51,7 +52,7 @@ export default class Welcome extends React.Component {
                 <div><a style={aSty}>xxxxx</a></div>
                 <div><a style={aSty}>xxxxx</a></div>
             </div>
-            <div key="d" className={styles["code-box-shape-bottom"]}>
+            <div key="d" className={styles["code-box-shape-bottom"]} style={{width: window.document.body.offsetHeight>900 ? '20%':'100%'}}>
               <div style={{fontWeight:400,fontSize:'1.4rem'}}>关于作者</div>
                 <div><a style={aSty}>xxxxx</a></div>
                 <div><a style={aSty}>xxxxx</a></div>
@@ -60,7 +61,7 @@ export default class Welcome extends React.Component {
                 <div><a style={aSty}>xxxxx</a></div>
                 <div><a style={aSty}>xxxxx</a></div>
             </div>
-            <div key="f" className={styles["code-box-shape-bottom"]}>
+            <div key="f" className={styles["code-box-shape-bottom"]} style={{width: window.document.body.offsetHeight>900 ? '20%':'100%'}}>
               <div style={{fontWeight:400,fontSize:'1.4rem'}}>关于作者</div>
                 <div><a style={aSty}>xxxxx</a></div>
                 <div><a style={aSty}>xxxxx</a></div>

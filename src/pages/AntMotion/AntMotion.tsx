@@ -73,7 +73,7 @@ export default class Welcome extends React.Component {
     const childrenAnim = { ...liAnim, x: '+=10', delay: delay + 100 };
     const oneAnim = { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' };
     const textItem = {width: '85%', display: 'inline-block',paddingLeft: '8%', marginTop: '-1.8%'};
-    const blockItem = {width: '33.33%', display: 'inline-block',padding: '4.5% 3.6% 0',verticalAlign:'top'};
+    const blockItem = {width: window.document.body.offsetHeight>=900?'33.33%':'100%', display: 'inline-block',padding: '4.5% 3.6% 0',verticalAlign:'top'};
     return  (
       <Card className={styles.antMotion}>
         <Banner />
@@ -147,7 +147,7 @@ export default class Welcome extends React.Component {
             style={{ transform: 'scale(0)', margin: '10px auto',opacity: 0  }}
             className="code-box-shape"
           >
-            <img src={require('../../assets/Planet_Website.gif')} />
+            <img src={require('../../assets/Planet_Website.gif')} style={{maxWidth:'100%'}} />
           </Parallax>
         </div>
         <div style={{height: height/2, textAlign:'center'}}>
@@ -161,7 +161,7 @@ export default class Welcome extends React.Component {
             style={{ transform: 'translateX(-100px)', margin: '10px auto' }}
             className="code-box-shape"
           >
-            <img src={require('../../assets/source.gif')} style={{height: height/2}} />
+            <img src={require('../../assets/source.gif')} style={{height: height/2,maxWidth:'100%'}} />
           </Parallax>
         </div>
         <Footer />
